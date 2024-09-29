@@ -58,7 +58,7 @@ export default function Contacto() {
           </div>
         </form>
         <p className="text-center mt-4 text-[#333333]">
-          O escríbenos directamente a: <a href="mailto:contacto@proyectoimpacto.com" className="text-[#8B4513] hover:underline">contacto@proyectoimpacto.com</a>
+          O escríbenos directamente a: <a href="mailto:vive@shieldedchange.com.mx" className="text-[#8B4513] hover:underline">vive@shieldedchange.com.mx</a>
         </p>
       </div>
     </section>

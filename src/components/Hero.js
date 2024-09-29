@@ -47,9 +47,7 @@ export default function Hero() {
           <CardContent className="p-6 flex flex-col justify-center h-full">
             <h2 className="text-3xl font-semibold text-[#8B4513] mb-4">Nuestra Visión</h2>
             <p className="text-[#333333] text-lg">
-              Aspiramos a crear un mundo donde cada individuo tenga la oportunidad de alcanzar su máximo potencial,
-              independientemente de sus circunstancias. Visualizamos una sociedad equitativa, sostenible y
-              empoderada, donde el impacto social positivo sea la norma y no la excepción.
+            Queremos lograr construir un mundo donde todas las personas puedan vivir libres de violencia intrafamiliar. Nuestra casa debería ser el lugar donde nos sentimos más seguros; desgraciadamente, esto aún no es una realidad en México ni en el mundo, pero se puede lograr. Vamos a crear una sociedad consciente y valiente que ponga un alto a este abuso.
             </p>
           </CardContent>
         </Card>
@@ -62,9 +60,8 @@ export default function Hero() {
           <CardContent className="p-6 flex flex-col justify-center h-full">
             <h2 className="text-3xl font-semibold text-[#8B4513] mb-4">Nuestra Misión</h2>
             <p className="text-[#333333] text-lg">
-              Nuestra misión es implementar soluciones innovadoras y sostenibles que aborden los desafíos sociales
-              más apremiantes de nuestra comunidad. Nos comprometemos a empoderar a las personas, fomentar la
-              colaboración y catalizar el cambio positivo a través de la educación, la tecnología y la acción comunitaria.
+            Nuestra misión es ayudar a disminuir y concientizar sobre la violencia intrafamiliar a través de una aplicación, un sitio web, redes sociales y la publicación de un libro. Creemos firmemente que todas y todos merecemos vivir una vida libre de violencia. Sabemos que la violencia doméstica, en particular, es difícil de combatir debido a su normalización y al hecho de que, a menudo, se trata como un tema tabú. Por eso, en Vive, nuestra misión es compartir información que facilite la identificación y denuncia de la violencia doméstica.
+            
             </p>
           </CardContent>
         </Card>
@@ -75,8 +72,8 @@ export default function Hero() {
   return (
     <section id="inicio" className="relative bg-gradient-to-b from-[#F5F5DC] to-white py-20">
       <div className="container mx-auto px-4">
-        <h1 className="text-5xl font-bold text-center text-[#8B4513] mb-4">Proyecto de Impacto Social</h1>
-        <p className="text-2xl text-center text-[#5D4037] mb-12">Transformando vidas, construyendo futuros</p>
+        <h1 className="text-5xl font-bold text-center text-[#8B4513] mb-4">Vive</h1>
+        <p className="text-2xl text-center text-[#5D4037] mb-12">No eres la oscuridad que soportaste, eres la luz que se niega a rendirse - Jhon Mark Green</p>
         <Carousel 
           className="w-full max-w-4xl mx-auto"
           selectedIndex={currentSlide}

@@ -51,8 +51,8 @@ export default function Navbar() {
     <nav className="bg-white shadow-md sticky top-0 z-50">
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         <Link href="/" className="flex items-center space-x-2">
-          <Image src="/logo.png" alt="Logo" width={40} height={40} />
-          <span className="text-2xl font-bold text-[#8B4513]">ProyectoImpacto</span>
+          <Image src="/logo.png" alt="Logo" width={90} height={90} />
+          <span className="text-2xl font-bold text-[#8B4513]">Vive</span>
         </Link>
         <div className="hidden md:flex space-x-4">
           <NavItems />

@@ -27,9 +27,7 @@ export default function Impacto() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
           <div className="lg:col-span-2">
             <p className="text-xl text-[#333333] mb-12 font-sans leading-relaxed">
-              En ProyectoImpacto, nos enfocamos en crear un cambio significativo y duradero en nuestra comunidad. 
-              Nuestras iniciativas están alineadas con los Objetivos de Desarrollo Sostenible (ODS) de las Naciones Unidas, 
-              centrándonos específicamente en áreas clave donde creemos que podemos hacer la mayor diferencia.
+            Según el Inegi en el 2021 hubó 2.76 millones de afectadas por la violencia intrafamiliar. En realidad no es que en México no haya instituciones, es que el problema es un taboo en está sociedad y las personas no tienen la información de como acudir a las instituciones. Busco ayudar a esos 2.76 millones de personas a denunciar de forma segura.
             </p>
             <div className="flex justify-center space-x-8">
               {impactos.map((impacto, index) => (
@@ -44,7 +42,7 @@ export default function Impacto() {
               <div className="absolute inset-0 border-8 border-[#8B4513] opacity-50"></div>
               <Card className="overflow-hidden relative z-10">
                 <Image
-                  src="/conferencia1.jpg"
+                  src="/conferencia2.jpg"
                   alt="Impacto en la comunidad"
                   width={400}
                   height={300}
