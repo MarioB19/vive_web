@@ -90,7 +90,7 @@ export default function Hero() {
   return (
     <section id="inicio" className="relative bg-gradient-to-b from-[#F5F5DC] to-white py-20">
       <div className="container mx-auto px-4">
-        <h1 className="text-5xl font-bold text-center text-[#8B4513] mb-4">Vive</h1>
+        <h1 className="text-5xl font-bold text-center text-[#8B4513] mb-4">VIVE: Una Vida Segura Libre de Violencia</h1>
         <p className="text-2xl text-center text-[#5D4037] mb-12">No eres la oscuridad que soportaste, eres la luz que se niega a rendirse - Jhon Mark Green</p>
         <Carousel className="w-full max-w-4xl mx-auto" ref={emblaRef}>
           <CarouselContent>

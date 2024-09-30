@@ -42,15 +42,13 @@ export default function Impacto() {
               <div className="absolute inset-0 border-8 border-[#8B4513] opacity-50"></div>
               <Card className="overflow-hidden relative z-10">
                 <Image
-                  src="/conferencia2.jpg"
+                  src="/conferencia1.jpg"
                   width={400}
                   height={300}
                   className="w-full h-auto object-cover transition-transform duration-300 hover:scale-105"
                   unoptimized
                 />
-                <CardContent className="p-4">
-                  <p className="text-[#333333] font-serif text-lg">Transformando vidas a través de la educación</p>
-                </CardContent>
+               
               </Card>
             </div>
             <div className="relative p-4 bg-[#F5E5DC] shadow-lg transform -rotate-1">
@@ -63,9 +61,7 @@ export default function Impacto() {
                   className="w-full h-auto object-cover transition-transform duration-300 hover:scale-105"
                   unoptimized
                 />
-                <CardContent className="p-4">
-                  <p className="text-[#333333] font-serif text-lg">Construyendo un futuro más equitativo</p>
-                </CardContent>
+               
               </Card>
             </div>
           </div>
