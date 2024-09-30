@@ -55,7 +55,7 @@ const Title = styled('div')(({ theme, $isMobile }) => ({
 }));
 
 const Description = styled('div')(({ theme, $isMobile }) => ({
-  fontSize: $isMobile ? '0.7rem' : '1.2rem',
+  fontSize: $isMobile ? '0.6rem' : '1.2rem',
   textAlign: 'center',
   '& span': {
     fontWeight: 'bold',
