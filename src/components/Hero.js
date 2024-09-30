@@ -96,7 +96,7 @@ export default function Hero() {
             </h2>
             <div className="relative">
               <p className="text-2xl text-center text-[#333333] mb-2 font-sans italic">
-                "No eres la oscuridad que soportaste, eres la luz que se niega a rendirse"
+                &quot;No eres la oscuridad que soportaste, eres la luz que se niega a rendirse&quot;
               </p>
               <p className="text-right text-[#6B4226] font-semibold">
                 - Jhon Mark Green
@@ -105,7 +105,7 @@ export default function Hero() {
           </div>
           <div className="absolute inset-0 bg-[#F5F5DC] rounded-lg shadow-2xl -bottom-4 -right-4 z-0"></div> {/* Create layered shadow effect */}
         </div>
-        
+
         <div className="bg-[#F5F5DC] p-6 rounded-lg shadow-lg"> {/* Changed to beige background */}
           <Carousel className="w-full max-w-4xl mx-auto" ref={emblaRef}>
             <CarouselContent>
@@ -128,9 +128,8 @@ export default function Hero() {
             {slides.map((_, index) => (
               <button
                 key={index}
-                className={`w-3 h-3 rounded-full ${
-                  currentSlide === index ? 'bg-[#8B4513]' : 'bg-[#D7CCC8]'
-                }`}
+                className={`w-3 h-3 rounded-full ${currentSlide === index ? 'bg-[#8B4513]' : 'bg-[#D7CCC8]'
+                  }`}
                 onClick={() => emblaApi && emblaApi.scrollTo(index)}
               />
             ))}
