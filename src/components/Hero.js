@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { Card, CardContent } from '@/components/ui/card'
 import {
   Carousel,
@@ -10,21 +10,17 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel"
 import { ChevronLeft, ChevronRight } from 'lucide-react'
-import { useCallback } from 'react'
 import useEmblaCarousel from 'embla-carousel-react'
 
 export default function Hero() {
   const [currentSlide, setCurrentSlide] = useState(0)
-  const totalSlides = 3
-
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true })
 
   useEffect(() => {
     if (emblaApi) {
       const timer = setInterval(() => {
         emblaApi.scrollNext()
-      }, 5000) // Change slide every 5 seconds
-
+      }, 5000)
       return () => clearInterval(timer)
     }
   }, [emblaApi])
@@ -46,7 +42,7 @@ export default function Hero() {
     {
       type: 'video',
       content: (
-        <div className="aspect-video rounded-lg overflow-hidden">
+        <div className="aspect-video rounded-lg overflow-hidden shadow-md">
           <iframe
             width="100%"
             height="100%"
@@ -88,37 +84,57 @@ export default function Hero() {
   ]
 
   return (
-    <section id="inicio" className="relative bg-gradient-to-b from-[#F5F5DC] to-white py-20">
+    <section id="inicio" className="relative bg-[#F5F5DC] py-20">
       <div className="container mx-auto px-4">
-        <h1 className="text-5xl font-bold text-center text-[#8B4513] mb-4">VIVE: Una Vida Segura Libre de Violencia</h1>
-        <p className="text-2xl text-center text-[#5D4037] mb-12">No eres la oscuridad que soportaste, eres la luz que se niega a rendirse - Jhon Mark Green</p>
-        <Carousel className="w-full max-w-4xl mx-auto" ref={emblaRef}>
-          <CarouselContent>
-            {slides.map((slide, index) => (
-              <CarouselItem key={index}>
-                <div className="p-1">
-                  {slide.content}
-                </div>
-              </CarouselItem>
+        <div className="bg-[#F5F5DC] p-8 rounded-lg shadow-2xl mb-16 relative"> {/* Increased shadow and margin-bottom */}
+          <div className="relative z-10"> {/* Ensure content is above pseudo-element */}
+            <h1 className="text-6xl font-extrabold text-center mb-2 font-serif text-[#4A3728]">
+              VIVE
+            </h1>
+            <h2 className="text-3xl font-bold text-center mb-6 font-serif text-[#8B4513]">
+              Una Vida Segura Libre de Violencia
+            </h2>
+            <div className="relative">
+              <p className="text-2xl text-center text-[#333333] mb-2 font-sans italic">
+                "No eres la oscuridad que soportaste, eres la luz que se niega a rendirse"
+              </p>
+              <p className="text-right text-[#6B4226] font-semibold">
+                - Jhon Mark Green
+              </p>
+            </div>
+          </div>
+          <div className="absolute inset-0 bg-[#F5F5DC] rounded-lg shadow-2xl -bottom-4 -right-4 z-0"></div> {/* Create layered shadow effect */}
+        </div>
+        
+        <div className="bg-[#F5F5DC] p-6 rounded-lg shadow-lg"> {/* Changed to beige background */}
+          <Carousel className="w-full max-w-4xl mx-auto" ref={emblaRef}>
+            <CarouselContent>
+              {slides.map((slide, index) => (
+                <CarouselItem key={index}>
+                  <div className="p-1">
+                    {slide.content}
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2">
+              <ChevronLeft className="h-6 w-6 text-[#8B4513]" />
+            </CarouselPrevious>
+            <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2">
+              <ChevronRight className="h-6 w-6 text-[#8B4513]" />
+            </CarouselNext>
+          </Carousel>
+          <div className="flex justify-center mt-6 space-x-2">
+            {slides.map((_, index) => (
+              <button
+                key={index}
+                className={`w-3 h-3 rounded-full ${
+                  currentSlide === index ? 'bg-[#8B4513]' : 'bg-[#D7CCC8]'
+                }`}
+                onClick={() => emblaApi && emblaApi.scrollTo(index)}
+              />
             ))}
-          </CarouselContent>
-          <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2">
-            <ChevronLeft className="h-6 w-6 text-[#8B4513]" />
-          </CarouselPrevious>
-          <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2">
-            <ChevronRight className="h-6 w-6 text-[#8B4513]" />
-          </CarouselNext>
-        </Carousel>
-        <div className="flex justify-center mt-6 space-x-2">
-          {slides.map((_, index) => (
-            <button
-              key={index}
-              className={`w-3 h-3 rounded-full ${
-                currentSlide === index ? 'bg-[#8B4513]' : 'bg-[#D7CCC8]'
-              }`}
-              onClick={() => emblaApi && emblaApi.scrollTo(index)}
-            />
-          ))}
+          </div>
         </div>
       </div>
     </section>
