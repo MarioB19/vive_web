@@ -10,18 +10,37 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel"
 import { ChevronLeft, ChevronRight } from 'lucide-react'
+import { useCallback } from 'react'
+import useEmblaCarousel from 'embla-carousel-react'
 
 export default function Hero() {
   const [currentSlide, setCurrentSlide] = useState(0)
   const totalSlides = 3
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentSlide((prevSlide) => (prevSlide + 1) % totalSlides)
-    }, 5000) // Change slide every 5 seconds
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true })
 
-    return () => clearInterval(timer)
-  }, [])
+  useEffect(() => {
+    if (emblaApi) {
+      const timer = setInterval(() => {
+        emblaApi.scrollNext()
+      }, 5000) // Change slide every 5 seconds
+
+      return () => clearInterval(timer)
+    }
+  }, [emblaApi])
+
+  const onSelect = useCallback(() => {
+    if (emblaApi) {
+      setCurrentSlide(emblaApi.selectedScrollSnap())
+    }
+  }, [emblaApi])
+
+  useEffect(() => {
+    if (emblaApi) {
+      emblaApi.on('select', onSelect)
+      onSelect()
+    }
+  }, [emblaApi, onSelect])
 
   const slides = [
     {
@@ -47,7 +66,7 @@ export default function Hero() {
           <CardContent className="p-6 flex flex-col justify-center h-full">
             <h2 className="text-3xl font-semibold text-[#8B4513] mb-4">Nuestra Visión</h2>
             <p className="text-[#333333] text-lg">
-            Queremos lograr construir un mundo donde todas las personas puedan vivir libres de violencia intrafamiliar. Nuestra casa debería ser el lugar donde nos sentimos más seguros; desgraciadamente, esto aún no es una realidad en México ni en el mundo, pero se puede lograr. Vamos a crear una sociedad consciente y valiente que ponga un alto a este abuso.
+              Queremos lograr construir un mundo donde todas las personas puedan vivir libres de violencia intrafamiliar. Nuestra casa debería ser el lugar donde nos sentimos más seguros; desgraciadamente, esto aún no es una realidad en México ni en el mundo, pero se puede lograr. Vamos a crear una sociedad consciente y valiente que ponga un alto a este abuso.
             </p>
           </CardContent>
         </Card>
@@ -60,8 +79,7 @@ export default function Hero() {
           <CardContent className="p-6 flex flex-col justify-center h-full">
             <h2 className="text-3xl font-semibold text-[#8B4513] mb-4">Nuestra Misión</h2>
             <p className="text-[#333333] text-lg">
-            Nuestra misión es ayudar a disminuir y concientizar sobre la violencia intrafamiliar a través de una aplicación, un sitio web, redes sociales y la publicación de un libro. Creemos firmemente que todas y todos merecemos vivir una vida libre de violencia. Sabemos que la violencia doméstica, en particular, es difícil de combatir debido a su normalización y al hecho de que, a menudo, se trata como un tema tabú. Por eso, en Vive, nuestra misión es compartir información que facilite la identificación y denuncia de la violencia doméstica.
-            
+              Nuestra misión es ayudar a disminuir y concientizar sobre la violencia intrafamiliar a través de una aplicación, un sitio web, redes sociales y la publicación de un libro. Creemos firmemente que todas y todos merecemos vivir una vida libre de violencia. Sabemos que la violencia doméstica, en particular, es difícil de combatir debido a su normalización y al hecho de que, a menudo, se trata como un tema tabú. Por eso, en Vive, nuestra misión es compartir información que facilite la identificación y denuncia de la violencia doméstica.
             </p>
           </CardContent>
         </Card>
@@ -74,11 +92,7 @@ export default function Hero() {
       <div className="container mx-auto px-4">
         <h1 className="text-5xl font-bold text-center text-[#8B4513] mb-4">Vive</h1>
         <p className="text-2xl text-center text-[#5D4037] mb-12">No eres la oscuridad que soportaste, eres la luz que se niega a rendirse - Jhon Mark Green</p>
-        <Carousel 
-          className="w-full max-w-4xl mx-auto"
-          selectedIndex={currentSlide}
-          setSelectedIndex={setCurrentSlide}
-        >
+        <Carousel className="w-full max-w-4xl mx-auto" ref={emblaRef}>
           <CarouselContent>
             {slides.map((slide, index) => (
               <CarouselItem key={index}>
@@ -102,7 +116,7 @@ export default function Hero() {
               className={`w-3 h-3 rounded-full ${
                 currentSlide === index ? 'bg-[#8B4513]' : 'bg-[#D7CCC8]'
               }`}
-              onClick={() => setCurrentSlide(index)}
+              onClick={() => emblaApi && emblaApi.scrollTo(index)}
             />
           ))}
         </div>

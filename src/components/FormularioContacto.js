@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
-import { Box, TextField, Button, Typography, Grid, InputAdornment, useTheme, CircularProgress } from '@mui/material';
+import { Box, TextField, Button, Typography, Grid, InputAdornment, CircularProgress } from '@mui/material';
 import EmailIcon from '@mui/icons-material/Email';
 import PersonIcon from '@mui/icons-material/Person';
 import EditNoteIcon from '@mui/icons-material/EditNote';
@@ -14,13 +14,18 @@ const fadeIn = keyframes`
 
 const LoadingSpinner = () => (
   <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
-    <CircularProgress />
+    <CircularProgress sx={{ color: '#8B4513' }} />
   </Box>
 );
 
+const palette = {
+  white: '#FFFFFF',
+  beige: '#F5F5DC',
+  coffee: '#8B4513',
+  black: '#000000',
+};
+
 export default function FormularioContacto() {
-  const theme = useTheme();
-  const isDarkMode = theme.palette.mode === 'dark';
   const [isLoading, setIsLoading] = useState(false);
 
   const { control, handleSubmit, formState: { errors }, reset } = useForm({
@@ -61,8 +66,8 @@ export default function FormularioContacto() {
       onSubmit={handleSubmit(onSubmit)}
       sx={{
         p: 4,
-        bgcolor: 'background.paper',
-        color: 'text.primary',
+        bgcolor: palette.beige,
+        color: palette.black,
         borderRadius: 2,
         maxWidth: 600,
         mx: 'auto',
@@ -75,7 +80,7 @@ export default function FormularioContacto() {
         variant="h4"
         gutterBottom
         sx={{
-          color: isDarkMode ? '#4dabf5' : '#1976d2',
+          color: palette.coffee,
           display: 'flex',
           alignItems: 'center',
           mb: 4,
@@ -84,11 +89,11 @@ export default function FormularioContacto() {
         }}
       >
         <MailOutlineIcon sx={{ fontSize: 40, color: 'inherit', mr: 1 }} />
-        Manda <Typography variant="h4" component="span" sx={{ color: theme.palette.text.primary, fontWeight: 'bold', fontSize: '1.5rem', ml: 1 }}>un mensaje.</Typography>
+        Manda <Typography variant="h4" component="span" sx={{ color: palette.black, fontWeight: 'bold', fontSize: '1.5rem', ml: 1 }}>un mensaje.</Typography>
       </Typography>
       <Grid container spacing={3}>
         <Grid item xs={12} sm={6}>
-          <Typography variant="subtitle1" display="block" sx={{ mb: 1, color: 'text.primary', fontWeight: 'bold' }}>
+          <Typography variant="subtitle1" display="block" sx={{ mb: 1, color: palette.black, fontWeight: 'bold' }}>
             Nombre
           </Typography>
           <Controller
@@ -106,17 +111,17 @@ export default function FormularioContacto() {
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position="end">
-                      <PersonIcon sx={{ color: isDarkMode ? '#4dabf5' : '#1976d2', fontSize: 28 }} />
+                      <PersonIcon sx={{ color: palette.coffee, fontSize: 28 }} />
                     </InputAdornment>
                   ),
                 }}
-                sx={textFieldStyle(isDarkMode)}
+                sx={textFieldStyle}
               />
             )}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
-          <Typography variant="subtitle1" display="block" sx={{ mb: 1, color: 'text.primary', fontWeight: 'bold' }}>
+          <Typography variant="subtitle1" display="block" sx={{ mb: 1, color: palette.black, fontWeight: 'bold' }}>
             Email
           </Typography>
           <Controller
@@ -140,17 +145,17 @@ export default function FormularioContacto() {
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position="end">
-                      <EmailIcon sx={{ color: isDarkMode ? '#4dabf5' : '#1976d2', fontSize: 28 }} />
+                      <EmailIcon sx={{ color: palette.coffee, fontSize: 28 }} />
                     </InputAdornment>
                   ),
                 }}
-                sx={textFieldStyle(isDarkMode)}
+                sx={textFieldStyle}
               />
             )}
           />
         </Grid>
         <Grid item xs={12}>
-          <Typography variant="subtitle1" display="block" sx={{ mb: 1, color: 'text.primary', fontWeight: 'bold' }}>
+          <Typography variant="subtitle1" display="block" sx={{ mb: 1, color: palette.black, fontWeight: 'bold' }}>
             Mensaje
           </Typography>
           <Controller
@@ -174,11 +179,11 @@ export default function FormularioContacto() {
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position="end" sx={{ alignSelf: 'flex-start', mt: 1, mr: 1 }}>
-                      <EditNoteIcon sx={{ color: isDarkMode ? '#4dabf5' : '#1976d2', fontSize: 28 }} />
+                      <EditNoteIcon sx={{ color: palette.coffee, fontSize: 28 }} />
                     </InputAdornment>
                   ),
                 }}
-                sx={textFieldStyle(isDarkMode)}
+                sx={textFieldStyle}
               />
             )}
           />
@@ -189,8 +194,8 @@ export default function FormularioContacto() {
             variant="contained"
             disabled={isLoading}
             sx={{
-              bgcolor: isDarkMode ? '#4dabf5' : '#1976d2',
-              color: 'white',
+              bgcolor: palette.coffee,
+              color: palette.white,
               textTransform: 'uppercase',
               fontSize: '1.1rem',
               fontWeight: 'bold',
@@ -198,9 +203,9 @@ export default function FormularioContacto() {
               mt: 2,
               transition: 'all 0.3s ease',
               '&:hover': {
-                bgcolor: isDarkMode ? '#2196f3' : '#1565c0',
+                bgcolor: '#6F4E37',
                 transform: 'translateY(-2px)',
-                boxShadow: '0 8px 15px rgba(25, 118, 210, 0.3)',
+                boxShadow: '0 8px 15px rgba(139, 69, 19, 0.3)',
               }
             }}
             fullWidth
@@ -232,38 +237,34 @@ export default function FormularioContacto() {
   );
 }
 
-const textFieldStyle = (isDarkMode) => ({
+const textFieldStyle = {
   '& .MuiOutlinedInput-root': {
     fontSize: '1.2rem',
     '& fieldset': {
-      borderColor: isDarkMode ? 'rgba(255, 255, 255, 0.23)' : 'rgba(0, 0, 0, 0.23)',
+      borderColor: 'rgba(139, 69, 19, 0.23)',
       borderWidth: '2px',
     },
     '&:hover fieldset': {
-      borderColor: isDarkMode ? '#4dabf5' : '#1976d2',
+      borderColor: palette.coffee,
     },
     '&.Mui-focused fieldset': {
-      borderColor: isDarkMode ? '#4dabf5' : '#1976d2',
+      borderColor: palette.coffee,
       borderWidth: '2px',
     },
-    boxShadow: isDarkMode 
-      ? '0 4px 10px rgba(77, 171, 245, 0.2)' 
-      : '0 4px 10px rgba(0, 0, 0, 0.2)',
+    boxShadow: '0 4px 10px rgba(139, 69, 19, 0.2)',
     borderRadius: '8px',
-    backgroundColor: isDarkMode ? '#333' : 'white',
+    backgroundColor: palette.white,
     transition: 'all 0.3s ease',
     '&:hover': {
-      boxShadow: isDarkMode 
-        ? '0 6px 12px rgba(77, 171, 245, 0.3)' 
-        : '0 6px 12px rgba(0, 0, 0, 0.3)',
+      boxShadow: '0 6px 12px rgba(139, 69, 19, 0.3)',
     }
   },
   '& .MuiInputBase-input': {
     padding: '16px 14px',
-    color: isDarkMode ? '#fff' : '#000',
+    color: palette.black,
   },
   '& .MuiInputBase-input::placeholder': {
-    color: isDarkMode ? 'rgba(255, 255, 255, 0.7)' : 'rgba(0, 0, 0, 0.6)',
+    color: 'rgba(0, 0, 0, 0.6)',
     opacity: 1,
   }
-});
+};

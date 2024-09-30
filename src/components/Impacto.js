@@ -27,7 +27,7 @@ export default function Impacto() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
           <div className="lg:col-span-2">
             <p className="text-xl text-[#333333] mb-12 font-sans leading-relaxed">
-            Según el Inegi en el 2021 hubó 2.76 millones de afectadas por la violencia intrafamiliar. En realidad no es que en México no haya instituciones, es que el problema es un taboo en está sociedad y las personas no tienen la información de como acudir a las instituciones. Busco ayudar a esos 2.76 millones de personas a denunciar de forma segura.
+            Según el INEGI en el 2021 hubó 2.76 millones de afectadas por la violencia intrafamiliar. En realidad no es que en México no haya instituciones, es que el problema es un taboo en está sociedad y las personas no tienen la información de como acudir a las instituciones. Busco ayudar a esos 2.76 millones de personas a denunciar de forma segura.
             </p>
             <div className="flex justify-center space-x-8">
               {impactos.map((impacto, index) => (
@@ -43,10 +43,10 @@ export default function Impacto() {
               <Card className="overflow-hidden relative z-10">
                 <Image
                   src="/conferencia2.jpg"
-                  alt="Impacto en la comunidad"
                   width={400}
                   height={300}
                   className="w-full h-auto object-cover transition-transform duration-300 hover:scale-105"
+                  unoptimized
                 />
                 <CardContent className="p-4">
                   <p className="text-[#333333] font-serif text-lg">Transformando vidas a través de la educación</p>
@@ -58,10 +58,10 @@ export default function Impacto() {
               <Card className="overflow-hidden relative z-10">
                 <Image
                   src="/dialogo2.jpg"
-                  alt="Reducción de desigualdades"
                   width={400}
                   height={300}
                   className="w-full h-auto object-cover transition-transform duration-300 hover:scale-105"
+                  unoptimized
                 />
                 <CardContent className="p-4">
                   <p className="text-[#333333] font-serif text-lg">Construyendo un futuro más equitativo</p>

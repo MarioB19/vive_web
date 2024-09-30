@@ -19,7 +19,7 @@ export default function Historia() {
           </div>
           <div className="md:w-1/2">
             <Image
-              src="/historia.jpg"
+              src="/reconocimiento.jpg"
               alt="Historia del proyecto"
               width={500}
               height={300}
