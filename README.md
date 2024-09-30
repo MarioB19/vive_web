@@ -2,7 +2,7 @@
 
 Website made in Next.js, using MUI components & shadcn/ui.
 
-`Using v0.dev`
+`Employ v0.dev`
 
 ## Properties
 - animation
