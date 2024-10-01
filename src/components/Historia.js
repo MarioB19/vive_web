@@ -19,7 +19,7 @@ export default function Historia() {
   return (
     <section id="historia" className="py-16 bg-[#F5E6D3]">
       <div className="container mx-auto px-4">
-        <h2 className="text-5xl font-bold text-center text-[#8B4513] mb-12 font-serif">Nuestra Historia</h2>
+      <h2 className="text-6xl font-bold text-center text-[#8B4513] mb-16 font-serif italic">Nuestra Historia</h2>
         <div className="flex flex-col lg:flex-row items-center justify-between space-y-12 lg:space-y-0 lg:space-x-12">
           <div className="lg:w-1/2">
             <p className="text-[#5D4037] text-2xl mb-4 leading-relaxed font-serif italic">
