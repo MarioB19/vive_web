@@ -23,13 +23,13 @@ export default function Impacto() {
   return (
     <section id="impacto" className="bg-gradient-to-b from-white to-[#F5F5DC] py-20">
       <div className="container mx-auto px-4">
-        <h2 className="text-5xl font-bold text-center text-[#8B4513] mb-12 font-serif">Nuestro Impacto</h2>
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
-          <div className="lg:col-span-2">
-            <p className="text-xl text-[#333333] mb-12 font-sans leading-relaxed">
-            Según el INEGI en el 2021 hubó 2.76 millones de afectadas por la violencia intrafamiliar. En realidad no es que en México no haya instituciones, es que el problema es un taboo en está sociedad y las personas no tienen la información de como acudir a las instituciones. Busco ayudar a esos 2.76 millones de personas a denunciar de forma segura.
+        <h2 className="text-6xl font-bold text-center text-[#8B4513] mb-16 font-serif italic">Nuestro Impacto</h2>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-16 items-start">
+          <div className="lg:col-span-2 space-y-12">
+            <p className="text-2xl text-[#333333] font-serif italic leading-relaxed">
+              Según el INEGI en el 2021 hubó 2.76 millones de afectadas por la violencia intrafamiliar. En realidad no es que en México no haya instituciones, es que el problema es un taboo en está sociedad y las personas no tienen la información de como acudir a las instituciones. Busco ayudar a esos 2.76 millones de personas a denunciar de forma segura.
             </p>
-            <div className="flex justify-center space-x-8">
+            <div className="flex justify-center space-x-12">
               {impactos.map((impacto, index) => (
                 <div key={index} className="w-1/2 max-w-xs">
                   <ODSCard {...impacto} />
@@ -37,7 +37,7 @@ export default function Impacto() {
               ))}
             </div>
           </div>
-          <div className="space-y-8">
+          <div className="space-y-12 lg:mt-0 mt-12">
             <div className="relative p-4 bg-[#F5E5DC] shadow-lg transform rotate-1">
               <div className="absolute inset-0 border-8 border-[#8B4513] opacity-50"></div>
               <Card className="overflow-hidden relative z-10">
@@ -46,22 +46,21 @@ export default function Impacto() {
                   width={400}
                   height={300}
                   className="w-full h-auto object-cover transition-transform duration-300 hover:scale-105"
-                  unoptimized
+                  alt="Conferencia"
                 />
-               
               </Card>
             </div>
             <div className="relative p-4 bg-[#F5E5DC] shadow-lg transform -rotate-1">
               <div className="absolute inset-0 border-8 border-[#8B4513] opacity-50"></div>
               <Card className="overflow-hidden relative z-10">
                 <Image
-                  src="/dialogo2.jpg"
+                  src="/reconocimiento.jpg"
                   width={400}
                   height={300}
                   className="w-full h-auto object-cover transition-transform duration-300 hover:scale-105"
-                  unoptimized
+                  alt="Diálogo"
+              
                 />
-               
               </Card>
             </div>
           </div>

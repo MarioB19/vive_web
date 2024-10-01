@@ -92,7 +92,7 @@ export default function Hero() {
               VIVE
             </h1>
             <h2 className="text-3xl font-bold text-center mb-6 font-serif text-[#8B4513]">
-              Una Vida Segura Libre de Violencia
+              Una Vida Segura
             </h2>
             <div className="relative">
               <p className="text-2xl text-center text-[#333333] mb-2 font-sans italic">
