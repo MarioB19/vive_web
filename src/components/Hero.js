@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useRef } from 'react'
 import { Card, CardContent } from '@/components/ui/card'
 import {
   Carousel,
@@ -9,12 +9,15 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel"
-import { ChevronLeft, ChevronRight } from 'lucide-react'
 import useEmblaCarousel from 'embla-carousel-react'
+import Image from 'next/image'
+import { ScrollArea } from "@/components/ui/scroll-area"
 
 export default function Hero() {
   const [currentSlide, setCurrentSlide] = useState(0)
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true })
+  const videoRef = useRef(null)
+  const [carouselHeight, setCarouselHeight] = useState('auto')
 
   useEffect(() => {
     if (emblaApi) {
@@ -38,11 +41,34 @@ export default function Hero() {
     }
   }, [emblaApi, onSelect])
 
+  useEffect(() => {
+    const updateCarouselHeight = () => {
+      if (videoRef.current) {
+        const videoHeight = videoRef.current.offsetHeight;
+        
+        
+        if (window.innerWidth > window.innerHeight) {
+   
+          setCarouselHeight(`${videoHeight + 110}px`); 
+        } else {
+       
+          setCarouselHeight(`${videoHeight  + 150}px`); 
+        }
+      }
+    };
+  
+    updateCarouselHeight()
+    window.addEventListener('resize', updateCarouselHeight)
+
+    return () => window.removeEventListener('resize', updateCarouselHeight)
+  }, [])
+
   const slides = [
     {
       type: 'video',
+      title: 'Acerca de Nosotros',
       content: (
-        <div className="aspect-video rounded-lg overflow-hidden shadow-md">
+        <div className="w-full aspect-video" ref={videoRef}>
           <iframe
             width="100%"
             height="100%"
@@ -57,79 +83,93 @@ export default function Hero() {
     },
     {
       type: 'vision',
+      title: 'Nuestra Visión',
       content: (
-        <Card className="bg-white shadow-lg h-full">
-          <CardContent className="p-6 flex flex-col justify-center h-full">
-            <h2 className="text-3xl font-semibold text-[#8B4513] mb-4">Nuestra Visión</h2>
-            <p className="text-[#333333] text-lg">
-              Queremos lograr construir un mundo donde todas las personas puedan vivir libres de violencia intrafamiliar. Nuestra casa debería ser el lugar donde nos sentimos más seguros; desgraciadamente, esto aún no es una realidad en México ni en el mundo, pero se puede lograr. Vamos a crear una sociedad consciente y valiente que ponga un alto a este abuso.
-            </p>
-          </CardContent>
-        </Card>
-      )
+        <p className="text-[#333333] text-sm sm:text-base lg:text-2xl font-serif italic leading-relaxed portrait:text-sm landscape:text-2xl">
+        Queremos lograr construir un mundo donde todas las personas puedan vivir libres de violencia intrafamiliar. Nuestra casa debería ser el lugar donde nos sentimos más seguros; desgraciadamente, esto aún no es una realidad en México ni en el mundo, pero se puede lograr. Vamos a crear una sociedad consciente y valiente que ponga un alto a este abuso.
+      </p>
+      
+      ),
+      image: '/conferencia2.jpg'
     },
     {
       type: 'mission',
+      title: 'Nuestra Misión',
       content: (
-        <Card className="bg-white shadow-lg h-full">
-          <CardContent className="p-6 flex flex-col justify-center h-full">
-            <h2 className="text-3xl font-semibold text-[#8B4513] mb-4">Nuestra Misión</h2>
-            <p className="text-[#333333] text-lg">
-              Nuestra misión es ayudar a disminuir y concientizar sobre la violencia intrafamiliar a través de una aplicación, un sitio web, redes sociales y la publicación de un libro. Creemos firmemente que todas y todos merecemos vivir una vida libre de violencia. Sabemos que la violencia doméstica, en particular, es difícil de combatir debido a su normalización y al hecho de que, a menudo, se trata como un tema tabú. Por eso, en Vive, nuestra misión es compartir información que facilite la identificación y denuncia de la violencia doméstica.
-            </p>
-          </CardContent>
-        </Card>
-      )
+        <p className="text-[#333333] text-sm sm:text-base lg:text-2xl font-serif italic leading-relaxed portrait:text-sm landscape:text-2xl">
+          Nuestra misión es ayudar a disminuir y concientizar sobre la violencia intrafamiliar a través de una aplicación, un sitio web, redes sociales y la publicación de un libro. Creemos firmemente que todas y todos merecemos vivir una vida libre de violencia. Sabemos que la violencia doméstica, en particular, es difícil de combatir debido a su normalización y al hecho de que, a menudo, se trata como un tema tabú. Por eso, en Vive, nuestra misión es compartir información que facilite la identificación y denuncia de la violencia doméstica.
+        </p>
+      ),
     }
   ]
 
   return (
-    <section id="inicio" className="relative bg-[#F5F5DC] py-20">
+    <section id="inicio" className="relative bg-[#F5F5DC] py-12 md:py-20">
       <div className="container mx-auto px-4">
-        <div className="bg-[#F5F5DC] p-8 rounded-lg shadow-2xl mb-16 relative"> {/* Increased shadow and margin-bottom */}
-          <div className="relative z-10"> {/* Ensure content is above pseudo-element */}
-            <h1 className="text-6xl font-extrabold text-center mb-2 font-serif text-[#4A3728]">
+        <div className="bg-[#F5F5DC] p-6 md:p-8 rounded-lg shadow-2xl mb-8 md:mb-16 relative">
+          <div className="relative z-10">
+            <h1 className="text-4xl md:text-6xl font-extrabold text-center mb-2 font-serif text-[#4A3728]">
               VIVE
             </h1>
-            <h2 className="text-3xl font-bold text-center mb-6 font-serif text-[#8B4513]">
+            <h2 className="text-2xl md:text-3xl font-bold text-center mb-4 md:mb-6 font-serif text-[#8B4513]">
               Una Vida Segura
             </h2>
             <div className="relative">
-              <p className="text-2xl text-center text-[#333333] mb-2 font-sans italic">
+              <p className="text-xl md:text-2xl text-center text-[#333333] mb-2 font-serif italic">
                 &quot;No eres la oscuridad que soportaste, eres la luz que se niega a rendirse&quot;
               </p>
-              <p className="text-right text-[#6B4226] font-semibold">
+              <p className="text-right text-[#6B4226] font-semibold font-serif italic">
                 - Jhon Mark Green
               </p>
             </div>
           </div>
-          <div className="absolute inset-0 bg-[#F5F5DC] rounded-lg shadow-2xl -bottom-4 -right-4 z-0"></div> {/* Create layered shadow effect */}
+          <div className="absolute inset-0 bg-[#F5F5DC] rounded-lg shadow-2xl -bottom-4 -right-4 z-0"></div>
         </div>
 
-        <div className="bg-[#F5F5DC] p-6 rounded-lg shadow-lg"> {/* Changed to beige background */}
+        <div className="bg-[#F5F5DC] p-4 md:p-6 rounded-lg shadow-lg">
           <Carousel className="w-full max-w-4xl mx-auto" ref={emblaRef}>
-            <CarouselContent>
+            <CarouselContent style={{ height: carouselHeight }}>
               {slides.map((slide, index) => (
-                <CarouselItem key={index}>
-                  <div className="p-1">
-                    {slide.content}
+                <CarouselItem key={index} className="h-full">
+                  <div className="p-1 h-full">
+                    <h3 className="text-2xl md:text-3xl font-semibold text-[#8B4513] mb-4 font-serif italic text-center">{slide.title}</h3>
+                    <Card className="bg-[#F5E5DC] shadow-lg h-full">
+                      <CardContent className="p-4 md:p-6 h-full">
+                        <ScrollArea className="h-full">
+                          <div className="flex flex-col md:flex-row gap-4 md:gap-6 h-full">
+                            <div className={`flex-1 ${!slide.image ? 'md:col-span-2' : ''}`}>
+                              {slide.content}
+                            </div>
+                            {slide.image && (
+                              <div className="flex-1 mt-4 md:mt-0">
+                                <div className="relative p-4 bg-[#8B4513] shadow-lg transform rotate-1">
+                                  <div className="absolute inset-0 border-8 border-[#8B4513] opacity-50"></div>
+                                  <Image
+                                    src={slide.image}
+                                    width={400}
+                                    height={300}
+                                    alt={slide.title}
+                                    className="w-full h-auto object-cover transition-transform duration-300 hover:scale-105"
+                                  />
+                                </div>
+                              </div>
+                            )}
+                          </div>
+                        </ScrollArea>
+                      </CardContent>
+                    </Card>
                   </div>
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2">
-              <ChevronLeft className="h-6 w-6 text-[#8B4513]" />
-            </CarouselPrevious>
-            <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2">
-              <ChevronRight className="h-6 w-6 text-[#8B4513]" />
-            </CarouselNext>
+            <CarouselPrevious className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2" />
+            <CarouselNext className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2" />
           </Carousel>
-          <div className="flex justify-center mt-6 space-x-2">
+          <div className="flex justify-center mt-4 md:mt-6 space-x-2">
             {slides.map((_, index) => (
               <button
                 key={index}
-                className={`w-3 h-3 rounded-full ${currentSlide === index ? 'bg-[#8B4513]' : 'bg-[#D7CCC8]'
-                  }`}
+                className={`w-3 h-3 rounded-full ${currentSlide === index ? 'bg-[#8B4513]' : 'bg-[#D7CCC8]'}`}
                 onClick={() => emblaApi && emblaApi.scrollTo(index)}
               />
             ))}
