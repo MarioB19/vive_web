@@ -5,7 +5,8 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
-import { Menu } from 'lucide-react'
+import { Menu, X } from 'lucide-react'
+import { motion } from 'framer-motion'
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
@@ -31,41 +32,73 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const NavItems = () => (
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId)
+    if (element) {
+      element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      })
+    }
+    setIsOpen(false)
+  }
+
+  const NavItems = ({ mobile = false }) => (
     <>
       {['inicio', 'impacto', 'historia', 'contacto'].map((item) => (
-        <Button
+        <motion.div
           key={item}
-          variant="ghost"
-          className={`text-[#8B4513] hover:text-[#A0522D] transition-all duration-300 ${
-            activeSection === item ? 'border-b-2 border-[#8B4513]' : ''
-          }`}
+          className="relative"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
         >
-          <Link href={`#${item}`}>{item.charAt(0).toUpperCase() + item.slice(1)}</Link>
-        </Button>
+          <Button
+            variant="ghost"
+            className={`text-[#F5F5DC] hover:text-[#8B4513] hover:bg-[#F5F5DC] transition-all duration-300 ${
+              mobile ? 'w-full justify-start text-lg py-4' : ''
+            }`}
+            onClick={() => scrollToSection(item)}
+          >
+            <span className="font-serif">
+              {item.charAt(0).toUpperCase() + item.slice(1)}
+            </span>
+          </Button>
+          {activeSection === item && (
+            <motion.div
+              className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#F5F5DC]"
+              layoutId="activeSection"
+              initial={false}
+              transition={{ type: "spring", stiffness: 380, damping: 30 }}
+            />
+          )}
+        </motion.div>
       ))}
     </>
   )
 
   return (
-    <nav className="bg-white shadow-md sticky top-0 z-50">
-      <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-        <Link href="/" className="flex items-center space-x-2">
-          <Image src="/logo.png" alt="Logo" width={90} height={90} />
-          <span className="text-2xl font-bold text-[#8B4513]">Vive</span>
+    <nav className="bg-[#8B4513] shadow-md sticky top-0 z-50">
+      <div className="container mx-auto px-4 py-2 flex justify-between items-center">
+        <Link href="/" className="flex items-center space-x-2 group">
+          <div className="relative w-16 h-16 overflow-hidden rounded-full border-2 border-[#F5F5DC] transition-transform duration-300 group-hover:scale-110">
+            <Image src="/logo.png" alt="Logo" layout="fill" objectFit="cover" />
+          </div>
+          <span className="text-2xl font-bold text-[#F5F5DC] font-serif group-hover:text-white transition-colors duration-300">
+            Vive
+          </span>
         </Link>
-        <div className="hidden md:flex space-x-4">
+        <div className="hidden md:flex space-x-1">
           <NavItems />
         </div>
         <Sheet open={isOpen} onOpenChange={setIsOpen}>
           <SheetTrigger asChild className="md:hidden">
-            <Button variant="outline" size="icon">
-              <Menu className="h-6 w-6" />
+            <Button variant="ghost" size="icon" className="text-[#F5F5DC] hover:text-[#8B4513] hover:bg-[#F5F5DC]">
+              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </Button>
           </SheetTrigger>
-          <SheetContent side="right" className="w-[240px] sm:w-[300px]">
-            <nav className="flex flex-col space-y-4 mt-6">
-              <NavItems />
+          <SheetContent side="right" className="w-[240px] sm:w-[300px] bg-[#8B4513] border-l border-[#F5F5DC]">
+            <nav className="flex flex-col space-y-1 mt-6">
+              <NavItems mobile />
             </nav>
           </SheetContent>
         </Sheet>
