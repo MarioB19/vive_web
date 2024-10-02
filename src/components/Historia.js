@@ -18,7 +18,7 @@ const images = [
 ]
 
 const autoplayOptions = {
-  delay: 2000,
+  delay: 3000,
   playOnInit: true,
   stopOnInteraction: false,
   stopOnMouseEnter: false,
