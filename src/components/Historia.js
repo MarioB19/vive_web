@@ -38,15 +38,15 @@ export default function Historia() {
           {/* Texto */}
           <div className="lg:w-1/2">
             <p className="text-[#5D4037] text-lg lg:text-3xl mb-4 leading-relaxed font-serif italic">
-              Observé que muchas personas a mi alrededor conocidos, amigos o familia atravesaban una situación de violencia doméstica y no sabían que hacer al respecto, o aún sabiendo que acciones podían tomarse no se atrevían a dar el paso. Todas esas personas tienen que darse cuenta que no están solas y que con una llamada hay otra vida esperándoles al otro lado del teléfono.
+            &quot;Observé que muchas personas a mi alrededor conocidos, amigos o familia atravesaban una situación de violencia doméstica y no sabían que hacer al respecto, o aún sabiendo que acciones podían tomarse no se atrevían a dar el paso. Todas esas personas tienen que darse cuenta que no están solas y que con una llamada hay otra vida esperándoles al otro lado del teléfono.&quot;
             </p>
             <p className="text-[#5C3317] text-base lg:text-2xl font-bold font-serif mb-8">
-              - Maria Fernanda Anaya Barajas
+              - María Fernanda Anaya Barajas
             </p>
 
             <Button className="bg-[#8B4513] hover:bg-[#A0522D] text-[#F5E6D3] text-xl lg:text-2xl px-6 lg:px-8 py-3 lg:py-4 rounded-full shadow-lg transform transition duration-500 hover:scale-105">
               <a href="https://www.ashoka.org/es-mx/story/historia-de-mar%C3%ADa-fernanda-barajas" rel="noopener noreferrer" className="font-serif" target="_blank">
-                Conoce más sobre Maria Fernanda
+                Conoce más sobre María Fernanda
               </a>
             </Button>
           </div>
