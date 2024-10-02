@@ -45,15 +45,7 @@ export default function Hero() {
     const updateCarouselHeight = () => {
       if (videoRef.current) {
         const videoHeight = videoRef.current.offsetHeight;
-        
-        
-        if (window.innerWidth > window.innerHeight) {
-   
-          setCarouselHeight(`${videoHeight + 110}px`); 
-        } else {
-       
-          setCarouselHeight(`${videoHeight  + 150}px`); 
-        }
+        setCarouselHeight(`${videoHeight + (window.innerWidth > 768 ? 125 : 150)}px`);
       }
     };
   
@@ -68,16 +60,18 @@ export default function Hero() {
       type: 'video',
       title: 'Acerca de Nosotros',
       content: (
-        <div className="w-full aspect-video" ref={videoRef}>
-          <iframe
-            width="100%"
-            height="100%"
-            src="https://www.youtube.com/embed/QiMnH0_Z6aw?si=aXNxgstizDM2gUel"
-            title="YouTube video player"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          ></iframe>
+        <div className="w-full h-full flex items-center justify-center" ref={videoRef}>
+          <div className="aspect-video w-full max-w-3xl">
+            <iframe
+              width="100%"
+              height="100%"
+              src="https://www.youtube.com/embed/QiMnH0_Z6aw?si=aXNxgstizDM2gUel"
+              title="YouTube video player"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            ></iframe>
+          </div>
         </div>
       )
     },
@@ -86,9 +80,8 @@ export default function Hero() {
       title: 'Nuestra Visión',
       content: (
         <p className="text-[#333333] text-sm sm:text-base lg:text-2xl font-serif italic leading-relaxed portrait:text-sm landscape:text-2xl">
-        Queremos lograr construir un mundo donde todas las personas puedan vivir libres de violencia intrafamiliar. Nuestra casa debería ser el lugar donde nos sentimos más seguros; desgraciadamente, esto aún no es una realidad en México ni en el mundo, pero se puede lograr. Vamos a crear una sociedad consciente y valiente que ponga un alto a este abuso.
-      </p>
-      
+          Queremos lograr construir un mundo donde todas las personas puedan vivir libres de violencia intrafamiliar. Nuestra casa debería ser el lugar donde nos sentimos más seguros; desgraciadamente, esto aún no es una realidad en México ni en el mundo, pero se puede lograr. Vamos a crear una sociedad consciente y valiente que ponga un alto a este abuso.
+        </p>
       ),
       image: '/conferencia2.jpg'
     },
@@ -100,6 +93,7 @@ export default function Hero() {
           Nuestra misión es ayudar a disminuir y concientizar sobre la violencia intrafamiliar a través de una aplicación, un sitio web, redes sociales y la publicación de un libro. Creemos firmemente que todas y todos merecemos vivir una vida libre de violencia. Sabemos que la violencia doméstica, en particular, es difícil de combatir debido a su normalización y al hecho de que, a menudo, se trata como un tema tabú. Por eso, en Vive, nuestra misión es compartir información que facilite la identificación y denuncia de la violencia doméstica.
         </p>
       ),
+      image: '/logo.png'
     }
   ]
 
@@ -127,22 +121,22 @@ export default function Hero() {
         </div>
 
         <div className="bg-[#F5F5DC] p-4 md:p-6 rounded-lg shadow-lg">
-          <Carousel className="w-full max-w-4xl mx-auto" ref={emblaRef}>
+          <Carousel className="w-full max-w-5xl mx-auto" ref={emblaRef}>
             <CarouselContent style={{ height: carouselHeight }}>
               {slides.map((slide, index) => (
                 <CarouselItem key={index} className="h-full">
                   <div className="p-1 h-full">
                     <h3 className="text-2xl md:text-3xl font-semibold text-[#8B4513] mb-4 font-serif italic text-center">{slide.title}</h3>
-                    <Card className="bg-[#F5E5DC] shadow-lg h-full">
-                      <CardContent className="p-4 md:p-6 h-full">
-                        <ScrollArea className="h-full">
-                          <div className="flex flex-col md:flex-row gap-4 md:gap-6 h-full">
-                            <div className={`flex-1 ${!slide.image ? 'md:col-span-2' : ''}`}>
+                    <Card className="bg-[#F5E5DC] shadow-lg h-full overflow-hidden">
+                      <CardContent className="p-4 md:p-6 h-full flex items-center justify-center">
+                        <ScrollArea className="h-full w-full">
+                          <div className="flex flex-col md:flex-row gap-4 md:gap-6 h-full items-center">
+                            <div className={`flex-1 ${!slide.image ? 'md:w-full' : 'md:w-1/2'}`}>
                               {slide.content}
                             </div>
                             {slide.image && (
-                              <div className="flex-1 mt-4 md:mt-0">
-                                <div className="relative p-4 bg-[#8B4513] shadow-lg transform rotate-1">
+                              <div className="flex-1 mt-4 md:mt-0 md:w-1/2">
+                                <div className="relative p-4 bg-[#8B4513] shadow-lg transform rotate-1 hover:rotate-0 transition-transform duration-300">
                                   <div className="absolute inset-0 border-8 border-[#8B4513] opacity-50"></div>
                                   <Image
                                     src={slide.image}
@@ -162,14 +156,14 @@ export default function Hero() {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2" />
-            <CarouselNext className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2" />
+            <CarouselPrevious className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 bg-[#8B4513] text-white hover:bg-[#6B4226]" />
+            <CarouselNext className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 bg-[#8B4513] text-white hover:bg-[#6B4226]" />
           </Carousel>
           <div className="flex justify-center mt-4 md:mt-6 space-x-2">
             {slides.map((_, index) => (
               <button
                 key={index}
-                className={`w-3 h-3 rounded-full ${currentSlide === index ? 'bg-[#8B4513]' : 'bg-[#D7CCC8]'}`}
+                className={`w-3 h-3 rounded-full transition-all duration-300 ${currentSlide === index ? 'bg-[#8B4513] w-6' : 'bg-[#D7CCC8]'}`}
                 onClick={() => emblaApi && emblaApi.scrollTo(index)}
               />
             ))}
