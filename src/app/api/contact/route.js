@@ -16,9 +16,9 @@ export async function POST(request) {
   try {
     // Envía el correo
     await transporter.sendMail({
-      from: `"Formulario de Contacto" <${process.env.EMAIL_USER}>`,
-      to: "brandonmuro.contacto@gmail.com",
-      subject: "Nuevo mensaje de contacto",
+      from: `"Página Web VIVE" <${process.env.EMAIL_USER}>`,
+      to: "vive@shieldedchange.com.mx",
+      subject: "Nuevo mensaje de contacto página web",
       text: `Nombre: ${nombre}\nEmail: ${email}\nMensaje: ${mensaje}`,
       html: `
         <h3>Nuevo mensaje de contacto</h3>
