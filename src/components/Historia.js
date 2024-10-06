@@ -1,3 +1,5 @@
+"use client"
+
 import { useEffect, useState } from 'react';
 import Image from 'next/image'
 import { Button } from '@/components/ui/button'
@@ -83,13 +85,13 @@ export default function Historia() {
   }
 
   return (
-    <section id="historia" className="py-16 bg-[#F5E6D3]">
+    <section id="historia" className="py-16 bg-white">
       <div className="container mx-auto px-4">
         <motion.h2 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-5xl lg:text-6xl font-bold text-center text-[#8B4513] mb-8 lg:mb-16 font-serif italic"
+          className="text-5xl lg:text-6xl font-bold text-center text-black mb-8 lg:mb-16 font-serif italic"
         >
           Nuestra Historia
         </motion.h2>
@@ -102,10 +104,10 @@ export default function Historia() {
             transition={{ duration: 0.8, delay: 0.3 }}
             className="lg:w-1/2"
           >
-            <p className="text-[#5D4037] text-lg lg:text-3xl mb-4 leading-relaxed font-serif italic">
+            <p className="text-[#3E2723] text-lg lg:text-3xl mb-4 leading-relaxed font-serif italic">
               &quot;Observé que muchas personas a mi alrededor conocidos, amigos o familia atravesaban una situación de violencia doméstica y no sabían que hacer al respecto, o aún sabiendo que acciones podían tomarse no se atrevían a dar el paso. Todas esas personas tienen que darse cuenta que no están solas y que con una llamada hay otra vida esperándoles al otro lado del teléfono.&quot;
             </p>
-            <p className="text-[#5C3317] text-base lg:text-2xl font-bold font-serif mb-8">
+            <p className="text-[#1B0000] text-base lg:text-2xl font-bold font-serif mb-8">
               - María Fernanda Anaya Barajas
             </p>
 
@@ -113,7 +115,7 @@ export default function Historia() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <Button className="bg-[#8B4513] hover:bg-[#A0522D] text-[#F5E6D3] text-xl lg:text-2xl px-6 lg:px-8 py-3 lg:py-4 rounded-full shadow-lg transition duration-300">
+              <Button className="bg-black hover:bg-[#3E2723] text-white text-xl lg:text-2xl px-6 lg:px-8 py-3 lg:py-4 rounded-full shadow-lg transition duration-300">
                 <a href="https://www.ashoka.org/es-mx/story/historia-de-mar%C3%ADa-fernanda-barajas" rel="noopener noreferrer" className="font-serif" target="_blank">
                   Conoce más sobre María Fernanda
                 </a>
@@ -141,7 +143,7 @@ export default function Historia() {
                           animate="center"
                           exit="exit"
                         >
-                          <Card className="border-4 lg:border-8 border-[#D2B48C] rounded-lg overflow-hidden shadow-2xl transform transition-all duration-500 hover:scale-105">
+                          <Card className="border-4 lg:border-8 border-[#3E2723] rounded-lg overflow-hidden shadow-2xl transform transition-all duration-500 hover:scale-105">
                             <CardContent className="p-0">
                               <div className={`relative ${isPortrait ? 'h-400 w-400' : ''}`} style={isPortrait ? { height: '400px', width: '400px' } : { aspectRatio: '1 / 1' }}>
                                 <Image

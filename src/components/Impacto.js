@@ -21,9 +21,9 @@ const impactos = [
 
 export default function Impacto() {
   return (
-    <section id="impacto" className="bg-gradient-to-b from-white to-[#F5F5DC] py-20">
+    <section id="impacto" className="bg-white py-20">
       <div className="container mx-auto px-4">
-        <h2 className="text-6xl font-bold text-center text-[#8B4513] mb-16 font-serif italic">Nuestro Impacto</h2>
+        <h2 className="text-6xl font-bold text-center text-black mb-16 font-serif italic">Nuestro Impacto</h2>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-16 items-start">
           <div className="lg:col-span-2 space-y-12">
             <p className="text-2xl text-[#333333] font-serif italic leading-relaxed">
@@ -38,8 +38,8 @@ export default function Impacto() {
             </div>
           </div>
           <div className="space-y-12 lg:mt-0 mt-12">
-            <div className="relative p-4 bg-[#F5E5DC] shadow-lg transform rotate-1">
-              <div className="absolute inset-0 border-8 border-[#8B4513] opacity-50"></div>
+            <div className="relative p-4 bg-[#E0E0E0] shadow-lg transform rotate-1">
+              <div className="absolute inset-0 border-8 border-black opacity-50"></div>
               <Card className="overflow-hidden relative z-10">
                 <Image
                   src="/conferencia1.jpg"
@@ -50,8 +50,8 @@ export default function Impacto() {
                 />
               </Card>
             </div>
-            <div className="relative p-4 bg-[#F5E5DC] shadow-lg transform -rotate-1">
-              <div className="absolute inset-0 border-8 border-[#8B4513] opacity-50"></div>
+            <div className="relative p-4 bg-[#E0E0E0] shadow-lg transform -rotate-1">
+              <div className="absolute inset-0 border-8 border-black opacity-50"></div>
               <Card className="overflow-hidden relative z-10">
                 <Image
                   src="/reconocimiento.jpg"

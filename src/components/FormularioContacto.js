@@ -1,3 +1,5 @@
+"use client"
+
 import React, { useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { Box, TextField, Button, Typography, Grid, InputAdornment, CircularProgress } from '@mui/material';
@@ -14,14 +16,14 @@ const fadeIn = keyframes`
 
 const LoadingSpinner = () => (
   <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
-    <CircularProgress sx={{ color: '#8B4513' }} />
+    <CircularProgress sx={{ color: '#000000' }} />
   </Box>
 );
 
 const palette = {
   white: '#FFFFFF',
-  beige: '#F5F5DC',
-  coffee: '#8B4513',
+  beige: '#F5F5F5',
+  coffee: '#3E2723',
   black: '#000000',
 };
 
@@ -194,7 +196,7 @@ export default function FormularioContacto() {
             variant="contained"
             disabled={isLoading}
             sx={{
-              bgcolor: palette.coffee,
+              bgcolor: palette.black,
               color: palette.white,
               textTransform: 'uppercase',
               fontSize: '1.1rem',
@@ -203,9 +205,9 @@ export default function FormularioContacto() {
               mt: 2,
               transition: 'all 0.3s ease',
               '&:hover': {
-                bgcolor: '#6F4E37',
+                bgcolor: '#333333',
                 transform: 'translateY(-2px)',
-                boxShadow: '0 8px 15px rgba(139, 69, 19, 0.3)',
+                boxShadow: '0 8px 15px rgba(0, 0, 0, 0.3)',
               }
             }}
             fullWidth
@@ -241,7 +243,7 @@ const textFieldStyle = {
   '& .MuiOutlinedInput-root': {
     fontSize: '1.2rem',
     '& fieldset': {
-      borderColor: 'rgba(139, 69, 19, 0.23)',
+      borderColor: 'rgba(62, 39, 35, 0.23)',
       borderWidth: '2px',
     },
     '&:hover fieldset': {
@@ -251,12 +253,12 @@ const textFieldStyle = {
       borderColor: palette.coffee,
       borderWidth: '2px',
     },
-    boxShadow: '0 4px 10px rgba(139, 69, 19, 0.2)',
+    boxShadow: '0 4px 10px rgba(62, 39, 35, 0.2)',
     borderRadius: '8px',
     backgroundColor: palette.white,
     transition: 'all 0.3s ease',
     '&:hover': {
-      boxShadow: '0 6px 12px rgba(139, 69, 19, 0.3)',
+      boxShadow: '0 6px 12px rgba(62, 39, 35, 0.3)',
     }
   },
   '& .MuiInputBase-input': {
