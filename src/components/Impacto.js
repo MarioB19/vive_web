@@ -59,7 +59,6 @@ export default function Impacto() {
                   height={300}
                   className="w-full h-auto object-cover transition-transform duration-300 hover:scale-105"
                   alt="Diálogo"
-              
                 />
               </Card>
             </div>

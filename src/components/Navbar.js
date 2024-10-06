@@ -54,7 +54,7 @@ export default function Navbar() {
         >
           <Button
             variant="ghost"
-            className={`text-[#F5F5DC] hover:text-[#8B4513] hover:bg-[#F5F5DC] transition-all duration-300 ${
+            className={`text-white hover:text-black hover:bg-white transition-all duration-300 ${
               mobile ? 'w-full justify-start text-lg py-4' : ''
             }`}
             onClick={() => scrollToSection(item)}
@@ -65,7 +65,7 @@ export default function Navbar() {
           </Button>
           {activeSection === item && (
             <motion.div
-              className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#F5F5DC]"
+              className="absolute bottom-0 left-0 right-0 h-0.5 bg-white"
               layoutId="activeSection"
               initial={false}
               transition={{ type: "spring", stiffness: 380, damping: 30 }}
@@ -77,13 +77,13 @@ export default function Navbar() {
   )
 
   return (
-    <nav className="bg-[#8B4513] shadow-md sticky top-0 z-50">
+    <nav className="bg-black shadow-md sticky top-0 z-50">
       <div className="container mx-auto px-4 py-2 flex justify-between items-center">
         <Link href="/" className="flex items-center space-x-2 group">
-          <div className="relative w-16 h-16 overflow-hidden rounded-full border-2 border-[#F5F5DC] transition-transform duration-300 group-hover:scale-110">
+          <div className="relative w-16 h-16 overflow-hidden rounded-full border-2 border-white transition-transform duration-300 group-hover:scale-110">
             <Image src="/logo.png" alt="Logo" layout="fill" objectFit="cover" />
           </div>
-          <span className="text-2xl font-bold text-[#F5F5DC] font-serif group-hover:text-white transition-colors duration-300">
+          <span className="text-2xl font-bold text-white font-serif group-hover:text-gray-300 transition-colors duration-300">
             Vive
           </span>
         </Link>
@@ -92,11 +92,11 @@ export default function Navbar() {
         </div>
         <Sheet open={isOpen} onOpenChange={setIsOpen}>
           <SheetTrigger asChild className="md:hidden">
-            <Button variant="ghost" size="icon" className="text-[#F5F5DC] hover:text-[#8B4513] hover:bg-[#F5F5DC]">
+            <Button variant="ghost" size="icon" className="text-white hover:text-black hover:bg-white">
               {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </Button>
           </SheetTrigger>
-          <SheetContent side="right" className="w-[240px] sm:w-[300px] bg-[#8B4513] border-l border-[#F5F5DC]">
+          <SheetContent side="right" className="w-[240px] sm:w-[300px] bg-black border-l border-white">
             <nav className="flex flex-col space-y-1 mt-6">
               <NavItems mobile />
             </nav>

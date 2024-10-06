@@ -150,7 +150,6 @@ export default function Historia() {
                                   fill
                                   style={{ objectFit: 'cover' }}
                                   className="rounded-lg"
-                                  unoptimized
                                 />
                               </div>
                             </CardContent>

@@ -75,7 +75,6 @@ const ODSCard = ({ color, image, title, description }) => {
             src={image}
             alt={title}
             fill
-           
             style={{ objectFit: 'cover' }}
             loading="lazy"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
